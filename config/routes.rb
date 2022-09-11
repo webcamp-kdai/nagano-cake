@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+
   namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
+    get 'customers/index'
+    get 'customers/show'
+    get 'customers/edit'
   end
     root 'public/homes#top'
     get "/about" => "public/homes#about",as:"about"
