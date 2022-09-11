@@ -1,2 +1,17 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<h2>商品新規登録画面</h2>
+
+　<%= form_with model:@item,url:admin_items_path do |f| %>
+    <h4>ジャンル</h4>
+    <%= f.collection_select(:genre_id,@genres,:id,:name) %>
+　  <h4>商品名</h4>
+　  <%= f.text_field :name %>
+　  <h4>商品画像</h4>
+　  <%= f.file_field :image,accept:"image/*" %>
+　  <h4>商品説明</h4>
+　  <%= f.text_area :introduction %>
+　  <h4>税抜価格</h4>
+　  <%= f.number_field :price %>
+
+　  <%= f.submit '登録' %>
+
+　 <% end %>
