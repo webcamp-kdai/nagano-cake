@@ -1,2 +1,25 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<h2>顧客詳細</h2>
+  <td>
+    <%= @customer.last_name %>
+    <%= @customer.first_name %>
+  </td>
+  <td>
+    <%= @customer.last_name_kana %>
+    <%= @customer.first_name_kana %>
+  </td>
+  <td>
+    <%= @customer.email %>
+  </td>
+  <td>
+    <%= @customer.postal_code %>
+  </td>
+  <td>
+    <%= @customer.address %>
+  </td>
+  <td>
+    <%= @customer.telephone_number %>
+  </td>
+
+  <%= link_to "Edit",edit_admin_customer_path(@customer.id) %>
+
+
