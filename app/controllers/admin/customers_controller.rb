@@ -1,5 +1,5 @@
 class Admin::CustomersController < ApplicationController
-  #before_action :admin_scan,only: [:index,:show,:edit,:update]
+  before_action :authenticate_admin!
 
   def index
     @customers = Customer.all
@@ -24,10 +24,6 @@ class Admin::CustomersController < ApplicationController
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number)
   end
 
-  #def admin_scan
-  # unless current_customer.admin
-   #   redirect_to "/"
-    #end
-  #end
+
 
 end
