@@ -1,4 +1,6 @@
 class Admin::CustomersController < ApplicationController
+  #before_action :admin_scan,only: [:index,:show,:edit,:update]
+
   def index
     @customers = Customer.all
   end
@@ -21,5 +23,11 @@ class Admin::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number)
   end
+
+  #def admin_scan
+  # unless current_customer.admin
+   #   redirect_to "/"
+    #end
+  #end
 
 end
