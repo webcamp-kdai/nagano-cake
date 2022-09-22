@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'customers/show'
+    get 'customers/edit'
+    get 'customers/unsubscribe'
+  end
     root 'public/homes#top'
     get "/about" => "public/homes#about",as:"about"
 
