@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'cart_items/index'
+  end
   get '/customers/my_page' => 'public/customers#show'
-  resources:customers,only:[:edit,:update,:unsubscribe,:withdraw]
+  get '/customers/information/edit' => 'public/customers#edit'
+  patch '/customers/information' => 'public/customers#update'
+  get '/customers/unsubscribe' => 'public/customers#unsubscribe'
+  patch '/customers/withdraw' => 'public/customers#withdraw'
 
     root 'public/homes#top'
     get "/about" => "public/homes#about",as:"about"

@@ -1,2 +1,61 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h5>マイページ</h5>
+    <table class="table">
+      <thead class="table-borderless">
+        <th>登録情報</th>
+        <td>
+          <%=link_to "編集する",customers_information_edit_path,class:"btn btn-success" %>
+        </td>
+      </thead>
+      <tbody class="table-sm table-bordered border-dark">
+        <tr>
+          <td class="table-active">氏名</td>
+          <td>
+            <%= @customer.last_name %>
+            <%= @customer.first_name %>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-active">カナ</td>
+          <td>
+            <%= @customer.last_name_kana %>
+            <%= @customer.first_name_kana %>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-active">郵便番号</td>
+          <td>
+            <%= @customer.postal_code %>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-active">住所</td>
+          <td>
+            <%= @customer.address %>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-active">電話番号</td>
+          <td>
+            <%= @customer.telephone_number %>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-active">メールアドレス</td>
+          <td>
+            <%= @customer.email %>
+          </td>
+        </tr>
+      </tbody>
+      <tr class="table-borderless">
+        <th>配送先</th>
+      </tr>
+      <tr class="table-borderless">
+        <th>注文履歴</th>
+      </tr>
+    </table>
+  </div>
+</div>
+
+

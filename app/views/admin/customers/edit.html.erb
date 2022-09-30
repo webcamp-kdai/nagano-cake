@@ -1,4 +1,4 @@
-<%= form_with model:@customer,url:customer_registration_path do |f| %>
+<%= form_with model:@customer,url:admin_customer_path do |f| %>
 
   <div class="field">
     <%= f.label :last_name %><br />
@@ -40,21 +40,8 @@
     <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
   <div class="actions">
-    <%= f.submit "更新" %>
+    <%= f.submit "変更を保存" %>
   </div>
 <% end %>
 

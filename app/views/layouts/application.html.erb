@@ -24,6 +24,9 @@
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
                 <li class="nav-item">
+                  <%= link_to "マイページ", customers_my_page_path,class:'nav-link text-dark border rounded m-1' %>
+                </li>
+                <li class="nav-item">
                   <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class:'nav-link text-dark border rounded m-1' %>
                 </li>
               <% else %>

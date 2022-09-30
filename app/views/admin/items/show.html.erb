@@ -13,7 +13,7 @@
     ¥<%= @item.price %> (税抜)
   </td>
   <td>
-    <%= @item.genre_id %>
+    <%= @item.genre.name %>
   </td>
   <td>
     <%= link_to "Edit",edit_admin_item_path(@item.id) %>
