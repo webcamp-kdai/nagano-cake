@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   get '/customers/my_page' => 'public/customers#show'
   get '/customers/information/edit' => 'public/customers#edit'
   patch '/customers/information' => 'public/customers#update'
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources:cart_items,only:[:index,:update,:destroy,:create]
+    resources:addresses,only:[:index,:edit,:create,:update,:destroy]
   end
 
     root 'public/homes#top'
