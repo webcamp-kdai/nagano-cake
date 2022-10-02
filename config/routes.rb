@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources:cart_items,only:[:index,:update,:destroy,:create]
     resources:addresses,only:[:index,:edit,:create,:update,:destroy]
+    resources:items,only:[:index,:show]
   end
 
     root 'public/homes#top'

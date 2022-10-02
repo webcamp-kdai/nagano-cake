@@ -1,0 +1,28 @@
+<div class="container px-5 px-smm-0">
+
+ <div class="row">
+    <%#= render 'list',user:@user %>
+    <div class="col-md-3 flex flex-column bd-highlight">
+      <div class="border">
+        <h5>ジャンル検索</h5>
+      </div>
+      <div class="border">
+        <% @genres.each do |genre| %>
+        <div class="">
+          <%= genre.name %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h4>商品一覧</h4>
+          <% @items.each do |item| %>
+            <%= link_to item_path(item.id) do %>
+                  <%= image_tag item.get_image(100,100) %>
+              <%= item.name %>
+            <% end %>
+            <%= item.price %>
+          <% end %>
+    </div>
+ </div>
+</div>

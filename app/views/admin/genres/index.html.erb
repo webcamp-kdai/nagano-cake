@@ -1,6 +1,6 @@
 <h3>ジャンル一覧</h3>
 <% @genres.each do |genre| %>
-<div class="">
+<div class="col">
   <p><%= genre.name %></p>
   <%= link_to "編集",edit_admin_genre_path(genre.id) %>
 </div>
