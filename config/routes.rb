@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
 
+  namespace :public do
+    get 'orders/index'
+    get 'orders/edit'
+  end
+  
   get '/customers/my_page' => 'public/customers#show'
   get '/customers/information/edit' => 'public/customers#edit'
   patch '/customers/information' => 'public/customers#update'
