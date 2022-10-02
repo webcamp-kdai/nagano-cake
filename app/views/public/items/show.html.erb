@@ -1,2 +1,30 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 flex flex-column bd-highlight">
+      <div class="border">
+        <h6>ジャンル検索</h6>
+      </div>
+      <div class="border">
+        <% @genres.each do |genre| %>
+        <div class="">
+          <%= genre.name %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <%= image_tag @item.get_image(300,300) %>
+    </div>
+    <div class="col-md-6 flex-column">
+      <div>
+        <%= @item.name %>
+      </div>
+      <div>
+          <%= @item.introduction %>
+      </div>
+      <div>
+          ¥<%= @item.add_tax_price.to_s(:dalimited) %><%= "（税込）" %>
+      </div>
+    </div>
+  </div>
+</div>

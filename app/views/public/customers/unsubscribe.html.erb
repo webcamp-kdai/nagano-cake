@@ -9,10 +9,10 @@
       <p>退会する場合は、「退会する」をクリックしてください。</p>
       <div class="btn-wrapper col-10 mx-auto">
         <div class="row">
-          <%= link_to "退会しない",customers_my_page_path,class:'btn btn-primary btn-sm btn-block mb-3 sign_in' %>
+          <%= link_to "退会しない",customers_my_page_path(@customer),class:'btn btn-primary btn-sm' %>
         </div>
         <div class="row">
-          <%= link_to "退会する",customers_unsubscribe_path,class:'btn btn-danger btn-sm btn-block sign_up' %>
+          <%= link_to "退会する",customers_withdraw_path(@customer),method: :patch,class:'btn btn-danger btn-sm' %>
         </div>
       </div>
     </div>
