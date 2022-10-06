@@ -10,9 +10,12 @@ Rails.application.routes.draw do
     resources:cart_items,only:[:index,:update,:destroy,:create]
     resources:addresses,only:[:index,:edit,:create,:update,:destroy]
     resources:items,only:[:index,:show]
-    resources:orders,only:[:index,:edit]
+    resources:orders,only:[:new,:index,:show,:create]
   end
-
+  
+  post '/orders/comfirm' => 'public/orders#comfirm'
+  get '/orders/complete' => 'public/orders#complete'
+  
   delete '/cart_items/destroy_all' => 'public/cart_items#destroy_all'
 
     root 'public/homes#top'
