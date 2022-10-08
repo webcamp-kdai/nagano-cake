@@ -1,6 +1,6 @@
 <div class="container">
     <h5>ショッピングカート</h5>
-    <%=link_to 'カートを空にする',cart_items_destroy_all_path(@cart_items),method: :delete,"data-confirm"=>"本当に消しますか?" ,class:"btn btn-sm btn-danger"%>
+    <%=link_to 'カートを空にする',destroy_all_cart_items_path,method: :delete,"data-confirm"=>"本当に消しますか?" ,class:"btn btn-sm btn-danger"%>
   <table class="table table-bordered border-dark">
     <thead class="table-active">
       <td class="border border-dark">商品名</td>
@@ -44,5 +44,5 @@
      </tr>
   </table>
 
-     <%=link_to '注文情報に進む',"/",class:"btn btn-sm btn-success"%>
+     <%=link_to '注文情報に進む',new_order_path,class:"btn btn-sm btn-success"%>
 </div>

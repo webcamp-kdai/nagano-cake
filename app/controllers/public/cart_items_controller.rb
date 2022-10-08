@@ -1,5 +1,5 @@
 class Public::CartItemsController < ApplicationController
-  before_action :authenticate_customer!, only:[:index,:show,:edit,:update]
+  before_action :authenticate_customer!, only:[:index,:show,:edit,:update,:destroy,:destroy_all]
 
   def create
     @cart_item = CartItem.new(cart_item_params)
@@ -35,8 +35,8 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all
-    @cart_items = CartItema.all
-    @cart_items.destroy
+    cart_items = CartItem.all
+    cart_items.destroy_all
     redirect_to cart_items_path
   end
 
