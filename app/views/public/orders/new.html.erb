@@ -2,7 +2,6 @@
   <div class="row">
     <div class="ml-5 mb-3 font-weight-bold bg-light">注文情報入力</div>
   </div>
-  <form>
     <%= form_with model:@order,url:orders_comfirm_path,local: true do |f| %>
     <fieldset class="row mb-3">
       <legend class="col-form-label font-weight-bold col-sm-3 pt-0">支払方法</legend>
@@ -22,7 +21,7 @@
       <legend class="col-form-label font-weight-bold col-sm-3 pt-0">お届け先</legend>
       <div class="col-sm-10">
         <div class="form-check">
-          <%= f.radio_button :address,1 %>
+          <%= f.radio_button :select_address,0 %>
           <%= f.label :address_1,"ご自身の住所" %>
           <div class="col-sm-10 ">
             〒<%= current_customer.address %>
@@ -32,14 +31,14 @@
           </div>
         </div>
         <div class="form-check">
-          <%= f.radio_button :address,2 %>
+          <%= f.radio_button :select_address,1 %>
           <%= f.label :address_2,"登録先の住所" %>
           <div class="col-sm-10 pb-2">
             <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
           </div>
         </div>
         <div class="form-check">
-          <%= f.radio_button :address,3 %>
+          <%= f.radio_button :select_address,2 %>
           <%= f.label :address_3,"新しいお届け先" %>
           <div class="col-sm-12">
             <label class="col-sm-4 col-form-label">郵便番号（ハイフンなし）</label>
@@ -63,5 +62,4 @@
       </div>
     </div>
     <% end %>
-  </form>
 </div>

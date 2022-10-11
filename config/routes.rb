@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   post '/orders/comfirm' => 'public/orders#comfirm'
+  get '/orders/comfirm' => 'public/orders#comfirm'
   get '/orders/complete' => 'public/orders#complete'
 
 
