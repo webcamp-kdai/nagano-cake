@@ -13,9 +13,7 @@ class Public::OrdersController < ApplicationController
         order_detail.item_id = cart_item.item_id
         order_detail.order_id = @order.id
         order_detail.amount = cart_item.amount
-        @cart_items = current_customer.cart_items.all
-        @total = @cart_items.inject(0) { |sum, item| sum + item.sub_total }
-        order_detail.price = @total
+        order_detail.price = cart_item.item.price
         order_detail.save
       end
       redirect_to orders_complete_path

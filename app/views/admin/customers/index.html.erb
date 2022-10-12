@@ -2,7 +2,7 @@
   <% @customers.each do |customer| %>
     <td>
      <%= link_to admin_customer_path(customer.id) do %>
-      <p><%= customer.id %></p>
+      <p><%= customer.name %></p>
      <% end %>
      <p><%= customer.last_name %><%=" " %><%= customer.first_name %></p>
     </td>

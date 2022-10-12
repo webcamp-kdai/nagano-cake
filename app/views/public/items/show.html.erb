@@ -23,7 +23,7 @@
           <%= @item.introduction %>
       </div>
       <div>
-          ¥<%= @item.add_tax_price.to_s(:dalimited) %><%= "（税込）" %>
+          ¥<%= @item.add_tax_price.to_s(:delimited) %><%= "（税込）" %>
       </div>
       <%= form_with model: @cart_item,url:cart_items_path,method: :post,local:true do |f| %>
         <% if customer_signed_in? %>

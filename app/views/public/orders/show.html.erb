@@ -33,15 +33,6 @@
               <%= @order.status_i18n %>
            </td>
           </tr>
-          <tr>
-           <td class="border border-dark"><%#= order_detail.item.add_tax_price.to_s(:dalimited) %></td>
-           <td class="border border-dark">
-             <%= @order_detail.amount %>
-           </td>
-           <td class="border border-dark">
-             <%#= @order.order_detail.sub_total.to_s(:dalimited) %>
-           </td>
-          </tr>
         </tbody>
       </table>
     </div>
@@ -52,7 +43,7 @@
           <tr>
            <td class="table-active border border-dark">商品合計</td>
            <td class="border border-dark">
-             <%#= .price %>
+             <%= (@order.total_payment - @order.shopping_cost).to_s(:delimited) %>
            </td>
           </tr>
           <tr>
@@ -73,15 +64,32 @@
   </div>
 
   <div class="row mb-0">
-    <label class="col-sm-2 col-form-label font-weight-bold">お届け先</label>
-    <div class="col-sm-10">
-      〒<%= @order.postal_code %><%= @order.address %>
-    </div>
-  </div>
-  <div class="row mb-3 pt-0">
-    <label class="col-sm-2 col-form-label font-weight-bold"></label>
-    <div class="col-sm-10">
-      <%= @order.name %>
+    <div class=" mb-2 font-weight-bold ">注文内容</div>
+      <table class="table table-bordered border-dark">
+        <thead class="table-active">
+          <td class="border border-dark">商品名</td>
+          <td class="border border-dark">単価（税込）</td>
+          <td class="border border-dark">個数</td>
+          <td class="border border-dark">小計</td>
+        </thead>
+        <tbody>
+          <% @order.order_details.each do |order_detail| %>
+          <tr>
+           <td class="border border-dark">
+             <%= order_detail.item.name %>
+           </td>
+           <td class="border border-dark">
+             <%= order_detail.item.add_tax_price.to_s(:delimited) %></td>
+           <td class="border border-dark">
+             <%= order_detail.amount %>
+           </td>
+           <td class="border border-dark">
+             <%= order_detail.sub_total.to_s(:delimited) %>
+           </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

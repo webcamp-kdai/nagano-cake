@@ -1,18 +1,37 @@
 <div class="container">
   <div class="row d-flex flex-column mx-auto">
-    <div class="col-md-8 py-5 m- mx-auto border border-dark">
-      <p>ようこそ、ながのCAKEへ！</p>
-      <p>このサイトは、ケーキ販売のECサイトになります。</p>
-      <p>会員でない方も商品の閲覧はできますが、</p>
-      <p>購入には会員登録が必要になります。</p>
+    <div class="row mb-5">
+      <div class="col-sm-3">
+        <div class="border border-dark">
+          <div class="mx-5 font-weight-bold">ジャンル検索</div>
+        </div>
+        <div class="border border-dark">
+          <% @genres.each do |genre| %>
+          <div class="m-3">
+          <%= genre.name %>
+          </div>
+          <% end %>
+          </br></br></br>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <div class="py-3 my-3 mx-auto border border-dark">
+          <p>ようこそ、ながのCAKEへ！</p>
+          <p>このサイトは、ケーキ販売のECサイトになります。</p>
+          <p>会員でない方も商品の閲覧はできますが、</p>
+          <p>購入には会員登録が必要になります。</p>
+        </div>
+        <div class="font-weight-bold m-2">新着商品</div>
+        <div class="row mb-4">
+        <% @items.each do |item| %>
+          <div class="col-sm-3">
+            <%= image_tag item.get_image(100,100) %></br>
+            <%= item.name %></br>
+            ¥<%= item.price %>
+          </div>
+        <% end %>
+        </div>
+      </div>
     </div>
-    <table class="table">
-      <tbody>
-        <h2>新着商品</h2>
-        <tr>
-          <th></th>
-        </tr>
-      </tbody>
-    </table>
   </div>
 </div>

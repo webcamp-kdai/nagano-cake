@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/customers/unsubscribe' => 'public/customers#unsubscribe'
   patch '/customers/withdraw' => 'public/customers#withdraw'
 
+  get '/orders/complete' => 'public/orders#complete'
+
   scope module: :public do
     resources:cart_items,only:[:index,:update,:destroy,:create] do
       collection do
@@ -19,11 +21,13 @@ Rails.application.routes.draw do
 
   post '/orders/comfirm' => 'public/orders#comfirm'
   get '/orders/comfirm' => 'public/orders#comfirm'
-  get '/orders/complete' => 'public/orders#complete'
 
 
     root 'public/homes#top'
     get "/about" => "public/homes#about",as:"about"
+
+    get "/admin" => "admin/homes#top"
+
 
 
   devise_for :admin,skip:[:registrations,:passwords],controllers:{
@@ -36,6 +40,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
+    resources:orders,only:[:show,:update]
     resources:genres,only:[:create,:index,:edit,:update]
     resources:items,only:[:index,:new,:create,:show,:edit,:update]
     resources:customers,only:[:index,:show,:edit,:update]
