@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="ml-5 mb-3 font-weight-bold bg-light">注文情報入力</div>
+    <div class="ml-5 mb-3 font-weight-bold bg-light">注文情報確認</div>
   </div>
   <div class="row mb-3">
     <div class="col-sm-8">
@@ -75,7 +75,7 @@
     </div>
   </div>
 
-
+  <div class="row offset-md-5">
   <%= form_with model: @order, url:orders_path, local: true do |f| %>
     <%= f.hidden_field :name %>
     <%= f.hidden_field :postal_code %>
@@ -83,6 +83,7 @@
     <%= f.hidden_field :shopping_cost %>
     <%= f.hidden_field :total_payment %>
     <%= f.hidden_field :payment_method %>
-    <%= f.submit "注文を確定する" %>
+    <%= f.submit "注文を確定する",class:"btn btn-success" %>
   <% end %>
+  </div>
 </div>

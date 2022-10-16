@@ -1,6 +1,8 @@
 <div class="container">
-    <h5>注文履歴一覧</h5>
-  <table class="table table-bordered border-dark">
+  <div class="row">
+    <div class="ml-5 font-weight-bold bg-light">注文履歴一覧</div>
+  </div>
+  <table class="table table-sm table-bordered border-dark">
     <thead class="table-active">
       <td class="border border-dark">注文日</td>
       <td class="border border-dark">配送先</td>
@@ -11,28 +13,28 @@
     <tbody>
      <% @orders.each do |order| %>
       <tr>
-         <td class="border border-dark">
-           <%= order.created_at %>
+         <td class="border border-dark small">
+           <%= order.created_at.strftime('%Y/%m/%d') %>
          </td>
-         <td class="border border-dark">
+         <td class="border border-dark small">
            <%= order.postal_code %></br>
            <%= order.address %></br>
            <%= order.name %>
          </td>
-         <td class="border border-dark">
+         <td class="border border-dark small">
            <% order.order_details.each do |order_detail| %>
             <%= order_detail.item.name %>
            <% end %>
          </td>
-         <td class="border border-dark">
-
+         <td class="border border-dark small">
+            <%= order.status_i18n %>
          </td>
-         <td class="border border-dark">
-           <%= link_to '表示する',order_path(order.id),class:"btn btn-primary" %>
+         <td class="border border-dark my-auto">
+           <%= link_to '表示する',order_path(order.id),class:"btn btn-sm btn-primary" %>
          </td>
       </tr>
      <% end %>
     </tbody>
   </table>
-
+  <%= paginate @orders %>
 </div>

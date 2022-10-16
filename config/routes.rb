@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources:orders,only:[:show,:update]
     resources:genres,only:[:create,:index,:edit,:update]
-    resources:items,only:[:index,:new,:create,:show,:edit,:update]
+    resources:items,only:[:index,:new,:create,:show,:edit,:update,:destroy]
     resources:customers,only:[:index,:show,:edit,:update]
   end
 

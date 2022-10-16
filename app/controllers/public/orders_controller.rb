@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!, only:[:index,:show,:new,:create,:comfirm,:complete]
+
 
   def new
     @order = Order.new
@@ -35,10 +37,14 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = @address.postal_code
       @order.address = @address.address
       @order.name = @address.name
-    elsif params[:order][:select_address] == "2"
+    elsif params[:order][:select_address] == "2" && params[:order][:postal_code] != "" && params[:order][:address] != "" && params[:order][:name] != ""
+      @order.postal_code = params[:order][:postal_code]
+      @order.address = params[:order][:address]
+      @order.name = params[:order][:name]
       @address = Address.new(address_params)
-      @address.customer_id = current_customer.id
       @address.save
+    else
+      render :new
     end
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, item| sum + item.sub_total }
@@ -50,12 +56,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders.all
+    @orders = current_customer.orders.page(params[:page])
   end
 
   def show
     @order = current_customer.orders.find(params[:id])
-    
+
   end
 
   private

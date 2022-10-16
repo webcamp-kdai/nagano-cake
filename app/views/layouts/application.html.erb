@@ -55,6 +55,12 @@
                   </li>
                 <% else %>
                   <li class="nav-item">
+                    <%= link_to "About", about_path,class:'nav-link text-dark border rounded m-1' %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "商品一覧", items_path,class:'nav-link text-dark border rounded m-1' %>
+                  </li>
+                  <li class="nav-item">
                     <%= link_to "新規登録", new_customer_registration_path,class:'nav-link text-dark border rounded m-1' %>
                   </li>
                   <li class="nav-item">
@@ -70,7 +76,7 @@
     <main class="mb-auto border border-top-0 border-dark mx-2 p-4 h-75">
       <%= yield %>
     </main>
-    <footer class="border border-top-0 border-dark mx-2 p-3  ">
+    <footer class="border border-top-0 border-dark mx-2 p-3 ">
       </br></br>
     </footer>
     </div>

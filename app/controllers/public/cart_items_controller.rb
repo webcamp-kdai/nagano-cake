@@ -1,23 +1,24 @@
 class Public::CartItemsController < ApplicationController
-  before_action :authenticate_customer!, only:[:index,:show,:edit,:update,:destroy,:destroy_all]
+  before_action :authenticate_customer!, only:[:index,:create,:edit,:update,:destroy,:destroy_all]
+
 
   def create
-    @cart_item = CartItem.new(cart_item_params)
-    @cart_item.customer_id=current_customer.id
-    @cart_items=current_customer.cart_items.all
-    @cart_items.each do |cart_item|
-      if cart_item.item_id == @cart_item.item_id
-        new_amount = cart_item.amount + @cart_item.amount
-        cart_item.update_attribute(:amount, new_amount)
-        @cart_item.delete
+      @cart_item = CartItem.new(cart_item_params)
+      @cart_item.customer_id=current_customer.id
+      @cart_items=current_customer.cart_items.all
+      @cart_items.each do |cart_item|
+        if cart_item.item_id == @cart_item.item_id
+          new_amount = cart_item.amount + @cart_item.amount
+          cart_item.update_attribute(:amount, new_amount)
+          @cart_item.delete
+        end
       end
-    end
-    @cart_item.save
-    redirect_to cart_items_path,notice:"カート内に商品が入りました"
+      @cart_item.save
+      redirect_to cart_items_path,notice:"カート内に商品が入りました"
   end
 
   def index
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items.all
     @cart_item = CartItem
     @total = @cart_items.inject(0) { |sum, item| sum + item.sub_total }
   end

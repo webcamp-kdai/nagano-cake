@@ -1,7 +1,17 @@
-<h2>ジャンル編集画面</h2>
+<div class="container">
+  <div class="row">
+    <div class="ml-5 mb-3 font-weight-bold bg-light">ジャンル編集</div>
+  </div>
 
-<%= form_with model:@genre,url:admin_genre_path do |f| %>
-  <%= f.text_field :name %>
+  <div class="row mb-3">
+    <label class="col-sm-2 font-weight-bold">ジャンル名</label>
+      <div class="col-sm-10">
+        <%= form_with model:@genre,url:admin_genre_path do |f| %>
+        <%= f.text_field :name %>
+        <%= f.submit '変更を保存',class:"btn btn-success" %>
+        <% end %>
+      </div>
+  </div>
 
-  <%= f.submit '保存' %>
-<% end %>
+
+</div>

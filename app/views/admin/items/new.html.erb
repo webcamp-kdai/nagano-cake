@@ -36,11 +36,14 @@
     </div>
     <div class="row mb-3">
         <label class="col-sm-4">販売ステータス</label>
-        <div class="col-sm-8">
-          
+        <div class="col-sm-4">
+          <%= f.radio_button :is_active, :true %><%= "販売中" %>
+        </div>
+        <div class="col-sm-4">
+          <%= f.radio_button :is_active, :false %><%= "販売停止中" %>
         </div>
     </div>
-    
+
     <div class="mx-auto my-auto">
         <div class="d-flex align-items-center justify-content-center">
             <%= f.submit '新規登録',class:"btn btn-success" %>

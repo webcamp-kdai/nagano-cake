@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="ml-5 mb-3 font-weight-bold bg-light">注文履歴詳細</div>
+    <div class="ml-5 font-weight-bold bg-light">注文履歴詳細</div>
   </div>
-  <div class="row mb-3">
-    <div class="col-sm-7">
-    　<div class=" mb-2 font-weight-bold ">注文情報</div>
-      <table class="table table-bordered border-dark">
+  <div class="row mb-1">
+    <div class="col-sm-8">
+    　<div class=" mb-1 font-weight-bold ">注文情報</div>
+      <table class="table table-sm table-bordered border-dark">
         <tbody>
           <tr>
            <td class="table-active border border-dark">注文日</td>
            <td class="border border-dark">
-             <%= @order.created_at %>
+             <%= @order.created_at.strftime('%Y/%m/%d') %>
            </td>
           </tr>
           <tr>
@@ -36,9 +36,9 @@
         </tbody>
       </table>
     </div>
-    <div class="col-sm-4">
-      <table class="table table-bordered border-dark">
-      　<div class=" mb-2 font-weight-bold ">請求情報</div>
+    <div class="col-sm-3">
+      <table class="table table-sm table-bordered border-dark">
+      　<div class=" mb-1 font-weight-bold ">請求情報</div>
         <tbody>
           <tr>
            <td class="table-active border border-dark">商品合計</td>
@@ -62,10 +62,10 @@
       </table>
     </div>
   </div>
-
-  <div class="row mb-0">
-    <div class=" mb-2 font-weight-bold ">注文内容</div>
-      <table class="table table-bordered border-dark">
+  <div class="row mb-3">
+    <div class="col-sm-10">
+    　<div class=" mb-1 font-weight-bold ">注文内容</div>
+      <table class="table table-sm table-bordered border-dark mb-3">
         <thead class="table-active">
           <td class="border border-dark">商品名</td>
           <td class="border border-dark">単価（税込）</td>
