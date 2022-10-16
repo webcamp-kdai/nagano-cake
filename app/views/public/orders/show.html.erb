@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="row">
+    <div class="ml-5 font-weight-bold bg-light">注文履歴詳細</div>
+  </div>
+  <div class="row mb-1">
+    <div class="col-sm-8">
+    　<div class=" mb-1 font-weight-bold ">注文情報</div>
+      <table class="table table-sm table-bordered border-dark">
+        <tbody>
+          <tr>
+           <td class="table-active border border-dark">注文日</td>
+           <td class="border border-dark">
+             <%= @order.created_at.strftime('%Y/%m/%d') %>
+           </td>
+          </tr>
+          <tr>
+           <td class="table-active border border-dark">配送先</td>
+           <td class="border border-dark">
+             〒<%= @order.postal_code %></br>
+             <%= @order.address %></br>
+             <%= @order.name %>
+           </td>
+          </tr>
+          <tr>
+           <td class="table-active border border-dark">支払方法</td>
+           <td class="border border-dark">
+             <%= @order.payment_method_i18n %>
+           </td>
+          </tr>
+          <tr>
+           <td class="table-active border border-dark">ステータス</td>
+           <td class="border border-dark">
+              <%= @order.status_i18n %>
+           </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-3">
+      <table class="table table-sm table-bordered border-dark">
+      　<div class=" mb-1 font-weight-bold ">請求情報</div>
+        <tbody>
+          <tr>
+           <td class="table-active border border-dark">商品合計</td>
+           <td class="border border-dark">
+             <%= (@order.total_payment - @order.shopping_cost).to_s(:delimited) %>
+           </td>
+          </tr>
+          <tr>
+           <td class="table-active border border-dark">配送料</td>
+           <td class="border border-dark">
+             <%= @order.shopping_cost %>
+           </td>
+          </tr>
+          <tr>
+           <td class="table-active border border-dark font-weight-bold">ご請求額</td>
+           <td class="border border-dark">
+             <%= @order.total_payment.to_s(:delimited) %>
+           </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-sm-10">
+    　<div class=" mb-1 font-weight-bold ">注文内容</div>
+      <table class="table table-sm table-bordered border-dark mb-3">
+        <thead class="table-active">
+          <td class="border border-dark">商品名</td>
+          <td class="border border-dark">単価（税込）</td>
+          <td class="border border-dark">個数</td>
+          <td class="border border-dark">小計</td>
+        </thead>
+        <tbody>
+          <% @order.order_details.each do |order_detail| %>
+          <tr>
+           <td class="border border-dark">
+             <%= order_detail.item.name %>
+           </td>
+           <td class="border border-dark">
+             <%= order_detail.item.add_tax_price.to_s(:delimited) %></td>
+           <td class="border border-dark">
+             <%= order_detail.amount %>
+           </td>
+           <td class="border border-dark">
+             <%= order_detail.sub_total.to_s(:delimited) %>
+           </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

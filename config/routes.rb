@@ -1,4 +1,35 @@
 Rails.application.routes.draw do
+
+  get '/customers/my_page' => 'public/customers#show'
+  get '/customers/information/edit' => 'public/customers#edit'
+  patch '/customers/information' => 'public/customers#update'
+  get '/customers/unsubscribe' => 'public/customers#unsubscribe'
+  patch '/customers/withdraw' => 'public/customers#withdraw'
+
+  get '/orders/complete' => 'public/orders#complete'
+
+  scope module: :public do
+    resources:cart_items,only:[:index,:update,:destroy,:create] do
+      collection do
+        delete "destroy_all"
+      end
+    end
+    resources:addresses,only:[:index,:edit,:create,:update,:destroy]
+    resources:items,only:[:index,:show]
+    resources:orders,only:[:new,:index,:show,:create]
+  end
+
+  post '/orders/comfirm' => 'public/orders#comfirm'
+  get '/orders/comfirm' => 'public/orders#comfirm'
+
+
+    root 'public/homes#top'
+    get "/about" => "public/homes#about",as:"about"
+
+    get "/admin" => "admin/homes#top"
+
+
+
   devise_for :admin,skip:[:registrations,:passwords],controllers:{
     sessions:"admin/sessions"
   }
@@ -7,5 +38,13 @@ Rails.application.routes.draw do
     registrations:"public/registrations",
     sessions:"public/sessions"
   }
+
+  namespace :admin do
+    resources:orders,only:[:show,:update]
+    resources:genres,only:[:create,:index,:edit,:update]
+    resources:items,only:[:index,:new,:create,:show,:edit,:update,:destroy]
+    resources:customers,only:[:index,:show,:edit,:update]
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="ml-5 mb-3 font-weight-bold bg-light"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</div>
+  </div>
+  <%= form_with model:@customer,url:admin_customer_path do |f| %>
+  <div class="row mb-auto">
+    <label class="col-sm-4 font-weight-bold">会員ID</label>
+    <div class="col-sm-8">
+      <%= @customer.id %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label class="col-sm-4 font-weight-bold">氏名</label>
+    <div class="col-sm-8">
+      <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>  <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label class="col-sm-4 font-weight-bold">フリガナ</label>
+    <div class="col-sm-8">
+      <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>  <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label class="col-sm-4 font-weight-bold">郵便番号</label>
+    <div class="col-sm-8">
+      <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label class="col-sm-4 font-weight-bold">住所</label>
+    <div class="col-sm-8">
+      <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label class="col-sm-4 font-weight-bold">電話番号</label>
+    <div class="col-sm-8">
+      <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label class="col-sm-4 font-weight-bold">メールアドレス</label>
+    <div class="col-sm-8">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label class="col-sm-4 font-weight-bold">会員ステータス</label>
+    <div class="col-sm-4">
+      <%= f.radio_button :is_deleted, :false %><%= "有効" %>
+    </div>
+    <div class="col-sm-4">
+      <%= f.radio_button :is_deleted, :true %><%= "退会" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label class="col-sm-4 font-weight-bold"></label>
+    <div class="col-sm-8">
+      <%= f.submit "変更を保存",class:"btn btn-success" %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
